@@ -94,3 +94,5 @@ ENV/
 
 .idea/
 *.sqlite3
+
+*/staticfiles/*
