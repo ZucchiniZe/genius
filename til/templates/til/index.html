@@ -13,10 +13,6 @@
   {% if tils %}
     <div id="tils">
       {% for til in tils %}
-{#      {% if forloop.counter0|divisibleby:3 %}#}
-{#        <div class="row">#}
-{#      {% endif %}#}
-{#      <div class="col s2 m4">#}
         <div class="card blue-grey">
           <a href="{% url 'til:detail' til.id %}">
             <div class="card-content white-text">
@@ -30,10 +26,6 @@
             {% endfor %}
           </div>
         </div>
-{#      </div>#}
-{#      {% if forloop.revcounter0|divisibleby:3 %}#}
-{#        </div>#}
-{#      {% endif %}#}
       {% endfor %}
     </div>
   {% else %}
