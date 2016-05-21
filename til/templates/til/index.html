@@ -11,9 +11,6 @@
 
 {% block content %}
   {% if tils %}
-    <div class="header">
-      <a href="{% url 'til:create' %}" class="btn">Create new TIL</a>
-    </div>
     <div id="tils">
       {% for til in tils %}
 {#      {% if forloop.counter0|divisibleby:3 %}#}
