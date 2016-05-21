@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load markup %}
+
+{% block content %}
+  {% for post in posts %}
+    <div class="post">
+      <h1><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h1>
+      <h4>By {{ post.author.username|capfirst }}</h4>
+      <p>{{ post.body|commonmark|truncatewords:30 }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}

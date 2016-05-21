@@ -21,6 +21,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'peak',
+    'blog',
     'taggit',
     'hijack',
     'hijack_admin',

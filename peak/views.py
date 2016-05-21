@@ -9,7 +9,7 @@ from .forms import PeakForm
 
 
 def index(request):
-    peaks = Peak.objects.filter(private=False)[:20]
+    peaks = Peak.objects.filter(private=False).order_by('-pub_date')[:20]
     return render(request, 'peak/index.html', {'peaks': peaks})
 
 

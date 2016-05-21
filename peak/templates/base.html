@@ -15,6 +15,9 @@
 <nav class="blue darken-3">
   <div class="nav-wrapper container">
     <a href="{% url 'frontpage' %}" class="brand-logo center">Peaks</a>
+    <ul class="left hide-on-med-and-down">
+      <li><a href="{% url 'blog:index' %}">Blog</a></li>
+    </ul>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="{% url 'frontpage' %}">Index</a></li>
       {% if user.is_authenticated %}
