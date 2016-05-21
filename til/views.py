@@ -46,8 +46,8 @@ def edit(request, pk=None):
     form = TilForm(request.POST or None, instance=til)
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('til:index'))
+            new_til = form.save()
+            return HttpResponseRedirect(reverse('til:detail', kwargs={'pk': new_til.pk}))
 
     return render(request, 'til/create.html', {'form': form})
 
