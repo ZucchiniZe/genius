@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ til.title }}</h1>
+  <h3>Created By <a href="{% url 'til:index_user' til.user.username %}">{{ til.user.username }}</a> at {{ til.pub_date|date:"M nS" }}</h3>
+  <p>
+    {{ til.description }}
+  </p>
+  <ul>
+    {% for tag in til.tags.all %}
+      <li><a href="{% url 'til:index_tag' tag %}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

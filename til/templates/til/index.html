@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Listing TILs{% endblock %}
+
+{% block foot %}
+  <script src="{% static 'til/enquire.js' %}"></script>
+  <script src="{% static 'til/savvior.min.js' %}"></script>
+  <script src="{% static 'til/script.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  {% if tils %}
+    <div class="header">
+      <a href="{% url 'til:create' %}" class="btn">Create new TIL</a>
+    </div>
+    <div id="tils">
+      {% for til in tils %}
+{#      {% if forloop.counter0|divisibleby:3 %}#}
+{#        <div class="row">#}
+{#      {% endif %}#}
+{#      <div class="col s2 m4">#}
+        <div class="card blue-grey">
+          <a href="{% url 'til:detail' til.id %}">
+            <div class="card-content white-text">
+              <span class="card-title">{{ til.title }}</span>
+              <p>{{ til.description|truncatewords:10 }}</p>
+            </div>
+          </a>
+          <div class="card-action">
+            {% for tag in til.tags.all %}
+              <a href="{% url 'til:index_tag' tag %}">#{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+{#      </div>#}
+{#      {% if forloop.revcounter0|divisibleby:3 %}#}
+{#        </div>#}
+{#      {% endif %}#}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Oh no! It looks like there aren't any tils! Please create some <a href="{% url 'til:create' %}">here</a></p>
+  {% endif %}
+{% endblock %}

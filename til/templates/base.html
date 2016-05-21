@@ -1,0 +1,39 @@
+{% load staticfiles %}
+{% load hijack_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>{% block title %}TIL{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link href="{% static 'til/style.css' %}" rel="stylesheet"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'hijack/hijack-styles.css' %}" />
+  {% block head %}{% endblock %}
+</head>
+<body>
+{% hijack_notification %}
+<nav class="blue darken-3">
+  <div class="nav-wrapper container">
+    <a href="{% url 'frontpage' %}" class="brand-logo center">TILs</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="{% url 'frontpage' %}">Index</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'til:create' %}">Create</a></li>
+        <li><a href="{% url 'til:private' %}">Private</a></li>
+        <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'auth_login' %}">Login</a></li>
+        <li><a href="{% url 'registration_register' %}">Register</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+<br/>
+<div class="container">
+  {% block content %}{% endblock %}
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+{% block foot %}{% endblock %}
+</body>
+</html>
