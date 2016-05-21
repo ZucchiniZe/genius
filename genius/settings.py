@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'compat',
     'registration',
     'django_markwhat',
+    'opbeat.contrib.django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -139,6 +141,13 @@ STATIC_URL = '/static/'
 # Authentication settings
 
 LOGIN_REDIRECT_URL = '/'
+
+# Opbeat settings
+OPBEAT = {
+    'ORGANIZATION_ID': 'e4a92e8bae9a4cd9b82ad1ccb4f09f83',
+    'APP_ID': '0f4940ae28',
+    'SECRET_TOKEN': 'fb88ac5a782f33e09260b785b650cfff98df5c1f',
+}
 
 # Django Hijack settings
 HIJACK_LOGIN_REDIRECT_URL = '/til/private/'
