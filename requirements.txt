@@ -1,10 +1,13 @@
+CommonMark==0.6.4
 dj-database-url==0.4.1
 Django==1.9.6
 django-compat==1.0.11
 django-hijack==2.1.1
 django-hijack-admin==2.1.1
+django-markwhat==1.5
 django-registration-redux==1.4
 django-taggit==0.18.3
+future==0.15.2
 gunicorn==19.5.0
 psycopg2==2.6.1
 ptyprocess==0.5.1

@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load markup %}
 
 {% block content %}
   <h1>{{ til.title }}</h1>
-  <h3>Created By <a href="{% url 'til:index_user' til.user.username %}">{{ til.user.username }}</a> at {{ til.pub_date|date:"M nS" }}</h3>
+  <h3>Created By <a href="{% url 'til:index_user' til.user.username %}">{{ til.user.username }}</a> at {{ til.pub_date|date:"M jS" }}</h3>
   <p>
-    {{ til.description }}
+    {{ til.description|commonmark }}
   </p>
   <ul>
     {% for tag in til.tags.all %}

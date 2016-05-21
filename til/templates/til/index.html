@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load markup %}
 
 {% block title %}Listing TILs{% endblock %}
 
@@ -17,7 +18,7 @@
           <a href="{% url 'til:detail' til.id %}">
             <div class="card-content white-text">
               <span class="card-title">{{ til.title }}</span>
-              <p>{{ til.description|truncatewords:10 }}</p>
+              <p>{{ til.description|commonmark|striptags|truncatewords:10 }}</p>
             </div>
           </a>
           <div class="card-action">
