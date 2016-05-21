@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load markup %}
+
+{% block title %}Listing TILs{% endblock %}
+
+{% block foot %}
+  <script src="{% static 'peak/enquire.js' %}"></script>
+  <script src="{% static 'peak/savvior.min.js' %}"></script>
+  <script src="{% static 'peak/script.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  {% if peaks %}
+    <div id="peaks">
+      {% for peak in peaks %}
+        <div class="card blue-grey">
+          <a href="{% url 'peak:detail' peak.id %}">
+            <div class="card-content white-text">
+              <span class="card-title">{{ peak.title }}</span>
+              <p>{{ peak.description|commonmark|striptags|truncatewords:10 }}</p>
+            </div>
+          </a>
+          <div class="card-action">
+            {% for tag in peak.tags.all %}
+              <a href="{% url 'peak:index_tag' tag %}">#{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Oh no! It looks like there aren't any peaks! Please create some <a href="{% url 'peak:create' %}">here</a></p>
+  {% endif %}
+{% endblock %}

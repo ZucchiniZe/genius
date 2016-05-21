@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load markup %}
+
+{% block content %}
+  <h1>{{ peak.title }}</h1>
+  <h5>
+    Created By
+    <a href="{% url 'peak:index_user' peak.user.username %}">{{ peak.user.username }}</a>
+    at {{ peak.pub_date|date:"M jS" }}
+    {% if request.user == peak.user %}
+      <small class="links">
+        [ <a href="{% url 'peak:edit' peak.id %}">edit</a> | <a href="{% url 'peak:delete' peak.id %}">delete</a> ]
+      </small>
+    {% endif %}
+  </h5>
+  <p>
+    {{ peak.description|commonmark }}
+  </p>
+  <hr/>
+  <ul>
+    {% for tag in peak.tags.all %}
+      <li><a href="{% url 'peak:index_tag' tag %}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from .models import TIL
+from .models import Peak
 
 
-class TilAdmin(admin.ModelAdmin):
+class PeakAdmin(admin.ModelAdmin):
     list_display = ('title', 'pub_date', 'private', 'user')
 
-admin.site.register(TIL, TilAdmin)
+admin.site.register(Peak, PeakAdmin)

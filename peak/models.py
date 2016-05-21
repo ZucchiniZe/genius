@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 
 
-class TIL(models.Model):
+class Peak(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     user = models.ForeignKey(User)

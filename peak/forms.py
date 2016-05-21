@@ -1,14 +1,14 @@
 from django import forms
 from taggit.forms import TagField
 
-from .models import TIL
+from .models import Peak
 
 
-class TilForm(forms.ModelForm):
+class PeakForm(forms.ModelForm):
     tags = TagField(label='Tags (comma separated list of tags)')
     description = forms.CharField(label='Body', widget=forms.Textarea(attrs={'class': 'materialize-textarea'}))
 
     class Meta:
-        model = TIL
+        model = Peak
         fields = ['title', 'description', 'tags', 'private']
         exclude = ('user', 'pub_date')

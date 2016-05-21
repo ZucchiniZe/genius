@@ -20,7 +20,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'til',
+    'peak',
     'taggit',
     'hijack',
     'hijack_admin',
@@ -150,7 +150,7 @@ OPBEAT = {
 }
 
 # Django Hijack settings
-HIJACK_LOGIN_REDIRECT_URL = '/til/private/'
+HIJACK_LOGIN_REDIRECT_URL = '/peak/private/'
 HIJACK_LOGOUT_REDIRECT_URL = '/accounts/login/'
 HIJACK_USE_BOOTSTRAP = True
 HIJACK_ALLOW_GET_REQUESTS = True
