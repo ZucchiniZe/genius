@@ -50,3 +50,13 @@ def edit(request, pk=None):
             return HttpResponseRedirect(reverse('til:index'))
 
     return render(request, 'til/create.html', {'form': form})
+
+
+@login_required
+def delete(request, pk):
+    til = TIL.objects.get(pk=pk)
+    if request.user == til.user:
+        til.delete()
+        return HttpResponseRedirect(reverse('til:index'))
+    else:
+        return HttpResponseForbidden()

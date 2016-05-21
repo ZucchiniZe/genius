@@ -3,10 +3,20 @@
 
 {% block content %}
   <h1>{{ til.title }}</h1>
-  <h3>Created By <a href="{% url 'til:index_user' til.user.username %}">{{ til.user.username }}</a> at {{ til.pub_date|date:"M jS" }}</h3>
+  <h5>
+    Created By
+    <a href="{% url 'til:index_user' til.user.username %}">{{ til.user.username }}</a>
+    at {{ til.pub_date|date:"M jS" }}
+    {% if request.user == til.user %}
+      <small class="links">
+        [ <a href="{% url 'til:edit' til.id %}">edit</a> | <a href="{% url 'til:delete' til.id %}">delete</a> ]
+      </small>
+    {% endif %}
+  </h5>
   <p>
     {{ til.description|commonmark }}
   </p>
+  <hr/>
   <ul>
     {% for tag in til.tags.all %}
       <li><a href="{% url 'til:index_tag' tag %}">{{ tag }}</a></li>
