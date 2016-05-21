@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -35,17 +35,18 @@ def detail(request, pk):
 
 
 @login_required
-def create(request):
-    if request.method == 'POST':
-        form = TilForm(request.POST)
-        if form.is_valid():
-            tags = form.cleaned_data.pop('tags')
-            form.cleaned_data['user'] = request.user
-            til = TIL(**form.cleaned_data)
-            til.save()
-            til.tags.add(*tags)
-            return HttpResponseRedirect(reverse('til:index'))
+def edit(request, pk=None):
+    if pk:
+        til = get_object_or_404(TIL, pk=pk)
+        if til.user != request.user:
+            return HttpResponseForbidden()
     else:
-        form = TilForm()
+        til = TIL(user=request.user)
+
+    form = TilForm(request.POST or None, instance=til)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('til:index'))
 
     return render(request, 'til/create.html', {'form': form})
