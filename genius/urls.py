@@ -7,6 +7,6 @@ urlpatterns = [
     url(r'^$', index, name='frontpage'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^til/', include('til.urls', namespace='til')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^hijack/', include('hijack.urls')),
 ]
