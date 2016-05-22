@@ -31,7 +31,7 @@ def personal_index(request):
 
 def detail(request, pk):
     peak = get_object_or_404(Peak, pk=pk)
-    if request.user and peak.user != request.user:
+    if peak.private and (request.user and peak.user != request.user):
         return HttpResponseForbidden()
     return render(request, 'peak/detail.html', {'peak': peak})
 
