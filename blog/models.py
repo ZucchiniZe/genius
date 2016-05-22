@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     author = models.ForeignKey(User)
-    pub_date = models.DateTimeField(auto_now=True)
+    pub_date = models.DateTimeField()
     title = models.CharField(max_length=100)
     body = models.TextField()
 

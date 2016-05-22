@@ -5,7 +5,7 @@
   <div class="post">
     <h1>{{ post.title }}</h1>
     <h4>
-      By {{ post.author.username|capfirst }}
+      By {{ post.author.username|capfirst }} on {{ post.pub_date|date:"M jS" }}
       {% if request.user == post.author %}
         <small class="links">
           [ <a href="{% url 'blog:edit' post.id %}">edit</a> | <a href="{% url 'blog:delete' post.id %}">delete</a> ]
