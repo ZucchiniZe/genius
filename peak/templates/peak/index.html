@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load markup %}
 
-{% block title %}Listing TILs{% endblock %}
+{% block title %}Listing Peakss{% endblock %}
 
 {% block foot %}
   <script src="{% static 'peak/enquire.js' %}"></script>
@@ -11,6 +11,9 @@
 {% endblock %}
 
 {% block content %}
+  {% if reason %}
+    <h1>{{ reason }}</h1>
+  {% endif %}
   {% if peaks %}
     <div id="peaks">
       {% for peak in peaks %}
