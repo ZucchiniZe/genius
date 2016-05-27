@@ -11,8 +11,7 @@
     {% else %}
       <a href="{% url 'peak:index_user' peak.user.username %}">{{ peak.user.username }}</a>
     {% endif %}
-{#    on {{ peak.pub_date|date:"M jS f A" }}#}
-    {{ peak.pub_date|naturaltime }}
+    <span class="pub_date tooltipped" data-position="right" data-delay="50" data-tooltip="{{ peak.pub_date|date:"M jS f A" }}">{{ peak.pub_date|naturaltime }}</span>
     {% if request.user == peak.user %}
       <small class="links">
         [ <a href="{% url 'peak:edit' peak.id %}">edit</a> | <a href="{% url 'peak:delete' peak.id %}">delete</a> ]
