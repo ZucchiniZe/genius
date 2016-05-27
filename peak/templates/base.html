@@ -25,13 +25,13 @@
       {% if user.is_authenticated %}
         <li><a href="{% url 'peak:create' %}">Create</a></li>
         <li><a href="{% url 'peak:private' %}">Private</a></li>
-        <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+        <li><a href="{% url 'account_logout' %}">Logout</a></li>
         {% if user.is_staff %}
           <li><a href="{% url 'admin:index' %}">Admin</a></li>
         {% endif %}
       {% else %}
-        <li><a href="{% url 'auth_login' %}">Login</a></li>
-        <li><a href="{% url 'registration_register' %}">Register</a></li>
+        <li><a href="{% url 'account_login' %}">Login</a></li>
+        <li><a href="{% url 'account_signup' %}">Signup</a></li>
       {% endif %}
     </ul>
   </div>
