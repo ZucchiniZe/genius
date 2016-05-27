@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% load markup %}
+{% load humanize %}
 
 {% block content %}
-  <h1>{{ peak.title }}</h1>
+  <h2>{{ peak.title }}</h2>
   <h5>
-    Created By
-    <a href="{% url 'peak:index_user' peak.user.username %}">{{ peak.user.username }}</a>
-    at {{ peak.pub_date|date:"M jS" }}
+    Created by
+    {% if request.user == peak.user %}
+      <a href="{% url 'peak:index_user' peak.user.username %}">you</a>
+    {% else %}
+      <a href="{% url 'peak:index_user' peak.user.username %}">{{ peak.user.username }}</a>
+    {% endif %}
+{#    on {{ peak.pub_date|date:"M jS f A" }}#}
+    {{ peak.pub_date|naturaltime }}
     {% if request.user == peak.user %}
       <small class="links">
         [ <a href="{% url 'peak:edit' peak.id %}">edit</a> | <a href="{% url 'peak:delete' peak.id %}">delete</a> ]

@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load markup %}
 
-{% block title %}Listing Peakss{% endblock %}
+{% block title %}Listing Peaks{% endblock %}
 
 {% block foot %}
   <script src="{% static 'peak/enquire.js' %}"></script>
@@ -12,7 +12,7 @@
 
 {% block content %}
   {% if reason %}
-    <h1>{{ reason }}</h1>
+    <h2>{{ reason }}</h2>
   {% endif %}
   {% if peaks %}
     <div id="peaks">
@@ -24,11 +24,13 @@
               <p>{{ peak.description|commonmark|striptags|truncatewords:10 }}</p>
             </div>
           </a>
-          <div class="card-action">
-            {% for tag in peak.tags.all %}
-              <a href="{% url 'peak:index_tag' tag %}">#{{ tag }}</a>
-            {% endfor %}
-          </div>
+          {% if peak.tags.all %}
+            <div class="card-action">
+              {% for tag in peak.tags.all %}
+                <a href="{% url 'peak:index_tag' tag %}">#{{ tag }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>

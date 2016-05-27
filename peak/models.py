@@ -10,7 +10,7 @@ class Peak(models.Model):
     user = models.ForeignKey(User)
     pub_date = models.DateTimeField(auto_now_add=True)
     private = models.BooleanField(default=False)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     def __str__(self):
         return self.title

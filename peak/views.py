@@ -9,10 +9,10 @@ from .forms import PeakForm
 
 
 def index(request):
-    peaks = Peak.objects.filter(private=False).order_by('-pub_date')[:20]
+    peaks = Peak.objects.filter(private=False).order_by('-pub_date')[:90]
     return render(request, 'peak/index.html', {
         'peaks': peaks,
-        'reason': 'Viewing the 20 most recent peaks'
+        'reason': 'Viewing the most recent peaks'
     })
 
 
