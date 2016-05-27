@@ -4,8 +4,8 @@
 {% block content %}
   {% for post in posts %}
     <div class="post">
-      <h1><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h1>
-      <h4>By {{ post.author.username|capfirst }} on {{ post.pub_date|date:"M jS" }}</h4>
+      <h4><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h4>
+      <h6>By {{ post.author.username|capfirst }} on {{ post.pub_date|date:"M jS" }}</h6>
       <p>{{ post.body|commonmark|truncatewords:30 }}</p>
     </div>
   {% endfor %}
