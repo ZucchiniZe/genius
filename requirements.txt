@@ -3,9 +3,6 @@ defusedxml==0.4.1
 dj-database-url==0.4.1
 Django==1.9.6
 django-allauth==0.25.2
-django-compat==1.0.11
-django-hijack==2.1.1
-django-hijack-admin==2.1.1
 django-markwhat==1.5
 django-taggit==0.18.3
 future==0.15.2

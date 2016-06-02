@@ -26,8 +26,6 @@ INSTALLED_APPS = [
     'peak',
     'blog',
     'taggit',
-    'hijack',
-    'hijack_admin',
     'django_markwhat',
     'allauth',
     'allauth.account',
